@@ -102,4 +102,6 @@ $(function() {
           this.reset();
       });
 
+    $.getJSON('/tweets', )
+
 });
