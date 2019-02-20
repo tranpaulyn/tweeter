@@ -3,9 +3,9 @@
     border-radius: 10px;
 }
 
-.tweet-container:hover .tweet-avatar,
-.tweet-container:hover .tweet-header,
-.tweet-container:hover .sm-engage {
+.tweet:hover .tweet-avatar,
+.tweet:hover .tweet-header,
+.tweet:hover .sm-engage {
     opacity: 1;
 }
 
