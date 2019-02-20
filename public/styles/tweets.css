@@ -1,0 +1,92 @@
+.tweet-container {
+    margin: 2em;
+    border-radius: 10px;
+}
+
+.tweet-container:hover .tweet-avatar,
+.tweet-container:hover .tweet-header,
+.tweet-container:hover .sm-engage {
+    opacity: 1;
+}
+
+.tweet-container:hover .username {
+    color: #244751; 
+}
+
+/* #tweet-container:hover {
+    border: 1px solid #262626;
+} */
+
+.tweet-header {
+    background-color: #f3f3f3;
+    height: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 1px solid #a5a5a5;
+    opacity: 0.75;
+}
+
+.tweet-avatar {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    opacity: 0.5;
+}
+
+.username {
+    font-weight: 700;
+    font-size: 125%;
+    color: #657E85;
+    position: relative;
+}
+
+.tweet-handle {
+    float: right;
+    margin-right: 10px;
+    font-size: 90%;
+    padding-top: 20px;
+    color: #a5a5a5; 
+}
+
+.main-tweet {
+    color: #244751; 
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: auto;
+    border-right: 1px solid #a5a5a5;
+    border-left: 1px solid #a5a5a5;
+}
+
+.tweet-footer {
+    border-top: 1px solid #eaeaea;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #a5a5a5;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-right: 1px solid #a5a5a5;
+    border-left: 1px solid #a5a5a5;
+}
+
+.date {
+    font-size: 80%;
+    color: #244751; 
+}
+
+.sm-engage {
+    height: 20px;
+    width: 20px;
+    opacity: 0;
+    float: right;
+    margin-left: 10px;
+}
+
+.engage-link {
+    opacity: 0;
+}
+
+.engage-link:hover {
+    opacity: 1;
+}
