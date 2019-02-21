@@ -5,9 +5,6 @@
  */
 
 $(function() {
-    
-    const tweetData = [];
-
     const createTweetElement = function(tweetData) {
         return `
             <article class="tweet">
@@ -37,7 +34,6 @@ $(function() {
         };
     }
     
-    renderTweets(tweetData);
 
     $('#submitTweet').on('submit', function(event) {
         event.preventDefault();
@@ -49,22 +45,26 @@ $(function() {
               console.log("TWEET from server", tweet)
             const elm = createTweetElement(tweet)
             $('.tweet-container').prepend(elm); 
+            this.reset();
           })
           .catch((err) => {
             console.log(err);
             alert('Something went wrong, please try again!');
           });
-          this.reset();
       });
 
 
-      const loadTweets = $.get('/tweets', function(tweets) {
-        console.log(tweets);
-        for (let content in tweets) {
-            console.log(tweets[content]);
-            const elm = createTweetElement(tweets[content]);
-            $('.tweet-container').append(elm);
-        }
-      })
+      const loadTweets = function() {
+          $.get('/tweets', function(tweets) {
+            console.log(tweets);
+            for (let content in tweets) {
+                console.log(tweets[content]);
+                const elm = createTweetElement(tweets[content]);
+                $('.tweet-container').append(elm);
+            }
+        })
+    }
+
+    loadTweets()
 
 });
