@@ -43,7 +43,6 @@ $(function() {
         if (count < 140) {
             $.post('/tweets/', data)
             .then((tweet) => {
-                console.log("TWEET from server", tweet)
                 const elm = createTweetElement(tweet)
                 $('.tweet-container').prepend(elm); 
                 this.reset();
