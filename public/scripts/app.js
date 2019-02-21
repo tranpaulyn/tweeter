@@ -4,7 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(function() {
+
+    $(function() {
     const createTweetElement = function(tweetData) {
         return `
             <article class="tweet">
@@ -33,7 +34,11 @@ $(function() {
             $('.tweet-container').append(createTweetElement(database[tweet]));
         };
     }
-    
+
+    $('.composeTweet').click(function() {
+        $('.new-tweet').slideToggle("slide");
+    })
+
 
     $('#submitTweet').on('submit', function(event) {
         event.preventDefault();

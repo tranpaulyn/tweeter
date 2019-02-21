@@ -20,3 +20,21 @@
     height: 80px;
     margin-right: 10px;
 }
+
+.composeTweet {
+    float:right;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #E7FDFF;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 6px;
+    color: #00a087;
+    font-size: 20px;
+}
+
+.composeTweet:hover {
+    color: #000000;
+    background-color: #ffffff;
+}
+
