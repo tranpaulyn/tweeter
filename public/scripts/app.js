@@ -4,6 +4,11 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+function escape(str) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
 
     $(function() {
     const createTweetElement = function(tweetData) {
@@ -15,7 +20,7 @@
                     <span class="tweet-handle">${tweetData.user.handle}</span>
                 </header>
                 <section class="main-tweet">
-                    <p>${tweetData.content.text}</p>
+                    <p>${escape(tweetData.content.text)}</p>
                 </section>
                 <footer class="tweet-footer">
                     <span class="date">${tweetData.created_at}</span>
@@ -37,6 +42,7 @@
 
     $('.composeTweet').click(function() {
         $('.new-tweet').slideToggle("slide");
+        $('#text').focus();
     })
 
 
@@ -45,20 +51,22 @@
         const $form = $('#submitTweet')
         const data = $form.serialize();
         const count = data.length - 5;
-        if (count < 140) {
+        if (count <= 140) {
             $.post('/tweets/', data)
             .then((tweet) => {
                 const elm = createTweetElement(tweet)
                 $('.tweet-container').prepend(elm); 
                 this.reset();
                 $('.counter').html(140);
+                $('#serverAlert').hide();
+                $('#exceedChar').hide();
             })
             .catch((err) => {
                 console.log(err);
-                alert('Something went wrong, please try again!');
+                $('#serverAlert').show();
             });
         } else {
-            alert('You are exceeding the character limit. Please try again!')
+            $('#exceedChar').show();
         }
       });
 
