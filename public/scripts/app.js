@@ -10,6 +10,8 @@ function escape(str) {
     return div.innerHTML;
   }
 
+
+
     $(function() {
     const createTweetElement = function(tweetData) {
         return `
@@ -48,10 +50,9 @@ function escape(str) {
 
     $('#submitTweet').on('submit', function(event) {
         event.preventDefault();
-        const $form = $('#submitTweet')
+        const $form = $('#submitTweet');
         const data = $form.serialize();
-        const count = data.length - 5;
-        if (count <= 140) {
+        if ($('.counter').html() >= 0) {
             $.post('/tweets/', data)
             .then((tweet) => {
                 const elm = createTweetElement(tweet)
@@ -60,6 +61,7 @@ function escape(str) {
                 $('.counter').html(140);
                 $('#serverAlert').hide();
                 $('#exceedChar').hide();
+                $('.counter').css('color', '#244751')
             })
             .catch((err) => {
                 console.log(err);
