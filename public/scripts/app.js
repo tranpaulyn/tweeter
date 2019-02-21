@@ -39,18 +39,23 @@ $(function() {
         event.preventDefault();
         const $form = $('#submitTweet')
         const data = $form.serialize();
-        console.log('tweet: ', data);
-        $.post('/tweets/', data)
-          .then((tweet) => {
-              console.log("TWEET from server", tweet)
-            const elm = createTweetElement(tweet)
-            $('.tweet-container').prepend(elm); 
-            this.reset();
-          })
-          .catch((err) => {
-            console.log(err);
-            alert('Something went wrong, please try again!');
-          });
+        const count = data.length - 5;
+        if (count < 140) {
+            $.post('/tweets/', data)
+            .then((tweet) => {
+                console.log("TWEET from server", tweet)
+                const elm = createTweetElement(tweet)
+                $('.tweet-container').prepend(elm); 
+                this.reset();
+                $('.counter').html(140);
+            })
+            .catch((err) => {
+                console.log(err);
+                alert('Something went wrong, please try again!');
+            });
+        } else {
+            alert('You are exceeding the character limit. Please try again!')
+        }
       });
 
 
