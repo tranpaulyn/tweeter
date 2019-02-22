@@ -61,7 +61,7 @@ function escape(str) {
                 $('.counter').html(140);
                 $('#serverAlert').hide();
                 $('#exceedChar').hide();
-                $('.counter').css('color', '#244751')
+                $('.counter').css('color', '#244751');
             })
             .catch((err) => {
                 console.log(err);
@@ -79,7 +79,7 @@ function escape(str) {
             for (let content in tweets) {
                 console.log(tweets[content]);
                 const elm = createTweetElement(tweets[content]);
-                $('.tweet-container').append(elm);
+                $('.tweet-container').prepend(elm);
             }
         })
     }
