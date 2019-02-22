@@ -1,3 +1,6 @@
+// This script helps to count characters, and update character count in real time
+// This script also changes the char count to red.
+
 $(document).ready(function() {
 
     var textMax = 140;

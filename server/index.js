@@ -13,12 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 
-
 MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {
     console.error(`Failed to connect: ${MONGODB_URI}`);
   }
-    //
     // Because it exports a function that expects the `db` as a parameter, we can
     // require it and pass the `db` parameter immediately:
     const DataHelpers = require("./lib/data-helpers.js")(db);

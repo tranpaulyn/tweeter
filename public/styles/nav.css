@@ -16,25 +16,26 @@
 }
 
 #nav-bar .logo {
-    width: 80px;
-    height: 80px;
-    margin-right: 10px;
+    width: 5em;
+    height: 5em;
+    margin-right: 0.625em;
 }
 
 .composeTweet {
     float:right;
-    border: 1px solid #000000;
-    border-radius: 5px;
+    border: 0.0625em solid #000000;
+    border-radius: 0.3125em;
     background-color: #E7FDFF;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    margin-top: 6px;
+    padding-top: 0.93em;
+    padding-bottom: 0.93em;
+    margin-top: 0.375em;
     color: #00a087;
-    font-size: 20px;
+    font-size: 1.25em;
 }
 
 .composeTweet:hover {
     color: #000000;
     background-color: #ffffff;
 }
+
 

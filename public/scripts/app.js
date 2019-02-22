@@ -36,31 +36,26 @@ $(function() {
             </article>`
     }
 
-    // Render Tweets from the MongoDB
-    function renderTweets(database) {
-        for (let tweet in database) {
-            $('.tweet-container').append(createTweetElement(database[tweet]));
-        };
-    }
-
     // Compose button appear, hide and focus
     $('.composeTweet').click(function() {
         $('.new-tweet').slideToggle("slide");
         $('#text').focus();
+        // Hides errors for restarts
+        $('#exceedChar').hide();
+        $('#serverAlert').hide();
     })
 
     // Submit and prepend new tweet 
     $('#submitTweet').on('submit', function(event) {
         event.preventDefault();
-        const $form = $('#submitTweet');
-        const data = $form.serialize();
+        const data = $('#submitTweet').serialize();
         // Make sure tweet is within character limit
         if ($('.counter').html() >= 0) {
             $.post('/tweets/', data)
             .then((tweet) => {
                 const elm = createTweetElement(tweet)
                 $('.tweet-container').prepend(elm); 
-                this.reset();
+                this.reset(); // Clears text area 
                 $('.counter').html(140); // Reset Character Counter
                 $('#serverAlert').hide(); // If alerts appeared, get rid of them 
                 $('#exceedChar').hide();
@@ -68,9 +63,15 @@ $(function() {
             })
             .catch((err) => {
                 console.log(err);
+                if ($('#exceedChar').show()) {
+                    $('#exceedChar').hide();
+                };
                 $('#serverAlert').show(); // Show server alert
             });
         } else {
+            if ($('#serverAlert').show()) {
+                $('#serverAlert').hide();
+            }
             $('#exceedChar').show(); // Show character exceed alert 
         }
       });
